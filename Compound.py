@@ -11,10 +11,12 @@ def len_file(filename):
 script_dir = os.getcwd()
 rel_path = 'Compound'
 abs_files_path = os.path.join(script_dir, rel_path)
-os.remove(os.path.join(abs_files_path, 'result.txt'))
+if os.path.join(abs_files_path, 'result.txt') in abs_files_path:
+    os.remove(os.path.join(abs_files_path, 'result.txt'))
 str_num = {}
 for file in os.listdir(abs_files_path):
-    str_num[file] = len_file(os.path.join(abs_files_path, file))
+    if file != 'result.txt':
+        str_num[file] = len_file(os.path.join(abs_files_path, file))
 sorted_couples = sorted(str_num.items(), key=lambda x: x[1])
 sorted_str_num = dict(sorted_couples)
 
